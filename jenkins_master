@@ -6,7 +6,6 @@ pipeline {
         stage('Welcome to master'){
             steps{
                 echo 'Start Program'
-               sh 'python myscript.py Alice --age 30'
             }
         }
 
