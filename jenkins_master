@@ -1,4 +1,6 @@
-def props = readJSON file: 'data.json'
+node {
+    def props = readJSON file: 'data.json'
+}
 
 pipeline {
     agent any
