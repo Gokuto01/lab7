@@ -1,11 +1,8 @@
-pipeline {
-    agent any
-
-    stages {
-        
+mode() {
         stage('Welcome to master'){
             steps{
                 echo 'Start Program'
+                def data = readJSON file: '/input.json'
             }
         }
 
@@ -15,5 +12,4 @@ pipeline {
                 build job: 'jenkins_slave', parameters: [string(name: 'NAME', value: 'Jeeraphat'), string(name: 'AGE', value: '21')]
             }
         }
-    }
 }
