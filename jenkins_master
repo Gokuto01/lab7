@@ -1,4 +1,5 @@
-def data = readJSON file: 'lab7/data.json'
+node() {
+def data = readJSON file: 'data.json'
 pipeline {
     agent any
 
@@ -19,4 +20,5 @@ pipeline {
             }
         }
     }
+}
 }
