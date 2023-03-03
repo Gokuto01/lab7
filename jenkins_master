@@ -12,11 +12,11 @@ pipeline {
                 script{
                     def props = readJSON(text: readFile("data.json").trim())
                     echo "$props"
-                }
                 echo 'Start Trigger to send name and age to slave'
                 sh "echo ${props.name}"
                 sh "echo ${props.ages}"
                 build job: 'jenkins_slave', parameters: [string(name: 'name', value: "${props.name}"), string(name: 'ages', value: "${props.ages}")]
+                }
             }
         }
     }
