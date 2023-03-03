@@ -1,6 +1,19 @@
+def getName() {
+    if(params.name) {
+        return params.name;
+    } else {
+        return "Alice";
+    }
+}
+def getAges() {
+    if(params.name) {
+        return params.ages;
+    } else {
+        return "18";
+    }
+}
 pipeline {
     agent any
-    
     stages {
         stage('Example') {
             steps {
