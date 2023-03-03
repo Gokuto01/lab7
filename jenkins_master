@@ -6,7 +6,8 @@ node() {
         stage('Tigger the Slave Jobs') {
                 echo 'Start Trigger to send name and age to slave'
                 def props = readJSON file: 'data.json'
-                sh "echo ${props}"
+                sh "echo ${props.name}"
+                sh "echo ${props.ages}"
                 build job: 'jenkins_slave', parameters: [string(name: 'NAME', value: 'Jeeraphat'), string(name: 'AGE', value: '21')]
         }
 }
