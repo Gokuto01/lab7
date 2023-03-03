@@ -1,3 +1,5 @@
+def props = readJSON file: 'data.json'
+
 pipeline {
     agent any
 
@@ -12,7 +14,6 @@ pipeline {
         stage('Tigger the Slave Jobs') {
             steps {
                 echo 'Start Trigger to send name and age to slave'
-                props = readJSON file: 'data.json'
                 sh "echo ${props.name}"
                 sh "echo ${props.ages}"
                 build job: 'jenkins_slave', parameters: [string(name: 'name', value: "${props.name}"), string(name: 'ages', value: "${props.ages}")]
