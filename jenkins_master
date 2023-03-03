@@ -1,12 +1,12 @@
 node() {
         stage('Welcome to master'){
                 echo 'Start Program'
-                def data = readJSON file: 'data.json'
+                def props = readJSON file: 'data.json'
         }
 
         stage('Tigger the Slave Jobs') {
                 echo 'Start Trigger to send name and age to slave'
-                sh "echo ${data}"
+                sh "echo ${pros}"
                 build job: 'jenkins_slave', parameters: [string(name: 'NAME', value: 'Jeeraphat'), string(name: 'AGE', value: '21')]
         }
 }
