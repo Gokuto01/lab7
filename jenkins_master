@@ -15,7 +15,7 @@ pipeline {
                 }
                 echo 'Start Trigger to send name and age to slave'
                 sh "echo ${props.name}"
-                sh "echo ${props}"
+                sh "echo ${props.ages}"
                 build job: 'jenkins_slave', parameters: [string(name: 'name', value: "${props.name}"), string(name: 'ages', value: "${props.ages}")]
             }
         }
