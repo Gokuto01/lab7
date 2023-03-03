@@ -14,11 +14,13 @@ def getAges() {
 }
 pipeline {
     agent any
+    environment {
+        name = credentials("${getName()}")
+        ages = credentials("${getAges()}")
+    }
     stages {
         stage('Example') {
             steps {
-                name = credentials("${getName()}")
-                ages = credentials("${getAges()}")
                 echo "Hello from Slave ${name} of ${ages}"
                  sh 'python myscript.py Jeeraphat --age 21'
             }
