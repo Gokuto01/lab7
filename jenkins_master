@@ -6,8 +6,8 @@ node() {
 
         stage('Tigger the Slave Jobs') {
                 echo 'Start Trigger to send name and age to slave'
-                sh "echo ${data.name}"
-                sh "echo ${data.ages}"
+                sh "echo ${data['name']}"
+                sh "echo ${data.['ages']"
                 build job: 'jenkins_slave', parameters: [string(name: 'NAME', value: 'Jeeraphat'), string(name: 'AGE', value: '21')]
         }
 }
