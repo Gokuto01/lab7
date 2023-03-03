@@ -6,11 +6,14 @@ pipeline {
         stage('Welcome to master'){
             steps{
                 echo 'Start Program'
+                def data = readJSON file: '../data.json'
             }
         }
 
         stage('Tigger the Slave Jobs') {
             steps {
+                sh "echo ${data.name}"
+                sh "echo ${data.ages}"
                 echo 'Start Trigger to send name and age to slave'
                 build job: 'jenkins_slave', parameters: [string(name: 'NAME', value: 'Jeeraphat'), string(name: 'AGE', value: '21')]
             }
