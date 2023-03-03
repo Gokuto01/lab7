@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                echo "Hello from Slave ${name} of ${ages}"
+                echo "Hello from Slave ${params.name} of ${params.ages}"
                  sh 'python myscript.py Jeeraphat --age 21'
             }
         }
