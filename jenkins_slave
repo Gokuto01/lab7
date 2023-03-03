@@ -17,7 +17,9 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                echo "Hello from Slave ${getName()} of ${getAges()}"
+                name = credentials("${getName()}")
+                ages = credentials("${getAges()}")
+                echo "Hello from Slave ${name} of ${ages}"
                  sh 'python myscript.py Jeeraphat --age 21'
             }
         }
