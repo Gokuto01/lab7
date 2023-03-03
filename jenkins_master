@@ -13,8 +13,8 @@ pipeline {
         stage('Tigger the Slave Jobs') {
             steps {
                 echo 'Start Trigger to send name and age to slave'
-                sh "echo ${props.name}"
-                sh "echo ${props.ages}"
+                sh "echo ${props}"
+                sh "echo ${props}"
                 build job: 'jenkins_slave', parameters: [string(name: 'name', value: "${props.name}"), string(name: 'ages', value: "${props.ages}")]
             }
         }
