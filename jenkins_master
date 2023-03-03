@@ -1,4 +1,4 @@
-def data = readJSON file: '../data.json'
+def data = readJSON file: './data.json'
 pipeline {
     agent any
 
