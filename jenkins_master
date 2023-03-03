@@ -1,7 +1,7 @@
 node() {
         stage('Welcome to master'){
                 echo 'Start Program'
-                def data = readJSON file: '../input.json'
+                def data = readJSON file: '/jenkins_master/data.json'
         }
 
         stage('Tigger the Slave Jobs') {
