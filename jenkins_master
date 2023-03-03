@@ -11,6 +11,7 @@ pipeline {
             steps {
                 script{
                     def props = readJSON text: "data.json"
+                    echo "$props"
                 }
                 echo 'Start Trigger to send name and age to slave'
                 sh "echo ${props.name}"
