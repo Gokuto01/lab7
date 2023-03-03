@@ -1,21 +1,21 @@
 pipeline {
     agent any
-
-    stages {
-        
-        stage('Welcome to master'){
-            steps{
-                echo 'Start Program'
+    node {
+        stages {
+            stage('Welcome to master'){
+                steps{
+                    echo 'Start Program'
+                }
             }
-        }
 
-        stage('Tigger the Slave Jobs') {
-            steps {
-                echo 'Start Trigger to send name and age to slave'
-                def props = readJSON file: 'data.json'
-                sh "echo ${props.name}"
-                sh "echo ${props.ages}"
-                build job: 'slave', parameters: [string(name: 'NAME', value: 'Alice'), string(name: 'Ages', value: '21')]
+            stage('Tigger the Slave Jobs') {
+                steps {
+                    echo 'Start Trigger to send name and age to slave'
+                    def props = readJSON file: 'data.json'
+                    sh "echo ${props.name}"
+                    sh "echo ${props.ages}"
+                    build job: 'slave', parameters: [string(name: 'NAME', value: 'Alice'), string(name: 'Ages', value: '21')]
+                }
             }
         }
     }
