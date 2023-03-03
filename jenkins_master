@@ -1,11 +1,9 @@
 pipeline {
     agent any
-
-    stages {
-        environment {
+    environment {
             props = readJSON file: 'data.json'
-        }
-        
+    }
+    stages {
         stage('Welcome to master'){
             steps{
                 echo 'Start Program'
