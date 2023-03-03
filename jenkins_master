@@ -1,11 +1,10 @@
-node {
-    def props = readJSON file: 'data.json'
-}
-
 pipeline {
     agent any
 
     stages {
+        environment {
+            props = readJSON file: 'data.json'
+        }
         
         stage('Welcome to master'){
             steps{
