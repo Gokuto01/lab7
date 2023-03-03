@@ -1,7 +1,8 @@
 pipeline {
     agent any
     environment {
-            props = readJSON file: 'data.json'
+            data = readJSON file: 'data.json'
+            props = new JsonSlurperClassic().parseText(data)
     }
     stages {
         stage('Welcome to master'){
