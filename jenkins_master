@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    environment {
-            data = readJSON file: 'data.json'
-            props = new JsonSlurperClassic().parseText(data)
-    }
     stages {
         stage('Welcome to master'){
             steps{
@@ -13,6 +9,9 @@ pipeline {
 
         stage('Tigger the Slave Jobs') {
             steps {
+                script{
+                    def props = readJSON text: "${params.JSON}"
+                }
                 echo 'Start Trigger to send name and age to slave'
                 sh "echo ${props.name}"
                 sh "echo ${props}"
